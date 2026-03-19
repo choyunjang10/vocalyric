@@ -9,7 +9,8 @@
 
 ---
 ## URL
-https://choyunjang10.github.io/vocalyric/
+
+> https://choyunjang10.github.io/vocalyric/
 ---
 
 ## ✨ 미리보기
