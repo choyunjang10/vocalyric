@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vocalyric — 보컬로이드로 배우는 일본어</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&family=Orbitron:wght@400;700;900&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ░░ HEADER ░░ -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <button class="icon-btn" id="searchToggleBtn" aria-label="검색 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+      </button>
+
+      <a href="#" class="logo" id="logoBtn">
+        <span class="logo-v">V</span>ocalyric
+      </a>
+
+      <button class="icon-btn" id="menuBtn" aria-label="메뉴 열기">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+    <!-- 검색 바 -->
+    <div class="search-bar" id="searchBar">
+      <div class="search-inner">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="곡 제목 또는 아티스트 검색…" autocomplete="off" />
+        <button class="clear-btn" id="clearSearchBtn" aria-label="검색어 지우기">✕</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ░░ SIDE MENU ░░ -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+  <nav class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+      <span class="logo"><span class="logo-v">V</span>ocalyric</span>
+      <button class="icon-btn" id="closeMenuBtn" aria-label="메뉴 닫기">✕</button>
+    </div>
+    <ul class="side-menu-list">
+      <li><a href="#" class="menu-link active" data-view="home">🎵 홈</a></li>
+      <li><a href="#" class="menu-link" data-view="favorites">⭐ 즐겨찾기</a></li>
+      <li><a href="#" class="menu-link" data-view="all">📚 전체 곡 목록</a></li>
+    </ul>
+    <div class="side-menu-footer">
+      <button class="theme-toggle" id="themeToggle">
+        <span class="theme-icon">🌙</span>
+        <span class="theme-label">다크 모드</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ░░ TOOLTIP ░░ -->
+  <div class="tooltip" id="tooltip"></div>
+
+  <!-- ░░ MAIN ░░ -->
+  <main class="main-wrap" id="mainWrap">
+
+    <!-- HOME VIEW -->
+    <section class="view" id="homeView">
+      <!-- Hero -->
+      <div class="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-content">
+          <p class="hero-tag">보컬로이드 × 일본어</p>
+          <h1 class="hero-title">
+            노래로 배우는<br/>
+            <em>일본어</em>
+          </h1>
+          <p class="hero-sub">가사를 클릭하면 번역이 나타나요.<br/>단어에 마우스를 올려 뜻을 확인해보세요.</p>
+          <button class="btn-primary pulse" id="randomBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/>
+              <polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/>
+            </svg>
+            랜덤 추천
+          </button>
+        </div>
+        <div class="hero-deco">
+          <div class="deco-circle c1"></div>
+          <div class="deco-circle c2"></div>
+          <div class="deco-circle c3"></div>
+        </div>
+      </div>
+
+      <!-- Song Grid -->
+      <div class="section-label">모든 곡</div>
+      <div class="song-grid" id="songGrid"></div>
+    </section>
+
+    <!-- FAVORITES VIEW -->
+    <section class="view hidden" id="favoritesView">
+      <div class="view-header">
+        <h2 class="view-title">⭐ 즐겨찾기</h2>
+      </div>
+      <div class="song-grid" id="favGrid"></div>
+      <p class="empty-msg hidden" id="favEmpty">아직 즐겨찾기한 곡이 없어요.<br/>카드의 ⭐ 버튼을 눌러 저장해보세요!</p>
+    </section>
+
+    <!-- ALL SONGS VIEW -->
+    <section class="view hidden" id="allView">
+      <div class="view-header">
+        <h2 class="view-title">📚 전체 곡 목록</h2>
+      </div>
+      <div class="song-grid" id="allGrid"></div>
+    </section>
+
+    <!-- SEARCH RESULTS VIEW -->
+    <section class="view hidden" id="searchView">
+      <div class="view-header">
+        <h2 class="view-title" id="searchResultTitle">검색 결과</h2>
+      </div>
+      <div class="song-grid" id="searchGrid"></div>
+      <p class="empty-msg hidden" id="searchEmpty">검색 결과가 없어요. 다른 키워드를 입력해보세요.</p>
+    </section>
+
+    <!-- DETAIL VIEW -->
+    <section class="view hidden" id="detailView">
+      <div class="detail-back">
+        <button class="back-btn" id="backBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+          돌아가기
+        </button>
+      </div>
+      <div class="detail-card" id="detailCard">
+        <!-- JS로 렌더 -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ░░ FOOTER ░░ -->
+  <footer class="site-footer">
+    <p>Vocalyric · 보컬로이드 가사로 일본어를 &nbsp;<span class="accent">♪</span></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
