@@ -1,5 +1,5 @@
 # 🎵 Vocalyric — 보컬로이드 가사로 배우는 일본어
-
+https://choyunjang10.github.io/vocalyric/
 > **노래를 들으며, 가사를 클릭하며, 자연스럽게 일본어를 익히는 감성 학습 웹앱**
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-00FFD5?style=flat-square&logo=github)](https://[아이디].github.io/vocalyric)
